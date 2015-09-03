@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<bean id="episodeResult" factory-bean="resultCrawlerInstanceFactoryMethod" factory-method="createCrawlerResult">
+        <constructor-arg value="episode" />
+	</bean>
+	<bean id="seriesResult" factory-bean="resultCrawlerInstanceFactoryMethod" factory-method="createCrawlerResult">
+        <constructor-arg value="series" />
+	</bean>
+	
+	<bean id="resultCrawlerInstanceFactoryMethod" 
+	       class="com.dee.web.spring.usecase6.ResultCrawlerInstanceFactoryMethod">
+        <property name="crawlerResults">
+            <map>
+                <entry>
+                    <key><value>episode</value></key>
+                    <bean class = "com.dee.web.spring.usecase6.EpisodeResult" />
+                </entry>
+                <entry>
+                    <key><value>series</value></key>
+                    <bean class = "com.dee.web.spring.usecase6.SeriesResult" />
+                </entry>
+            </map>
+        </property>
+    </bean>
+    
+    
+
+</beans>
