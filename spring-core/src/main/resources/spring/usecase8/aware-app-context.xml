@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+            
+            
+    <bean id="customApplicationEventPublisherAware" 
+            class="com.dee.web.spring.usecase8.CustomApplicationEventPublisherAware" />
+
+	<bean id="student" class="com.dee.web.spring.usecase8.Student">
+		<property name="name" value="DienNM" />
+	</bean>
+    
+    <bean id="course" class="com.dee.web.spring.usecase8.model.Course" scope="prototype">
+        <property name="name" value="Java Programming" />
+        <property name="length" value="5" />
+    </bean>
+    
+</beans>
