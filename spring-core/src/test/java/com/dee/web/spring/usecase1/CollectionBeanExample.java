@@ -40,7 +40,25 @@ public class CollectionBeanExample extends TestCase{
     }
     
     public void testSetCollectionExternalConfig() {
-        User user = appContext.getBean("user", User.class);
+        User user = appContext.getBean("userExternalCollectionDefine", User.class);
+        Assert.assertEquals("DienNM", user.getName());
+        Assert.assertEquals("Tan Phu, Ho Chi Minh", user.getAddresses().get("home").getAddress());
+        Assert.assertEquals("home", user.getAddresses().get("home").getAddressType());
+        Assert.assertEquals("Tan Binh, Ho Chi Minh", user.getAddresses().get("office").getAddress());
+        Assert.assertEquals("office", user.getAddresses().get("office").getAddressType());
+        
+        Assert.assertEquals(2, user.getFavourites().size());
+
+        Assert.assertEquals(2, user.getPhones().size());
+        Assert.assertEquals("01659.xxx.xxx", user.getPhones().get(0));
+        
+        Assert.assertEquals(2, user.getTraining().size());
+        Assert.assertEquals("Java Programming", user.getTraining().get("java"));
+        Assert.assertEquals("C Programming", user.getTraining().get("C"));
+    }
+    
+    public void testSetCollectionSpecificConcreteClass() {
+        User user = appContext.getBean("userSpecificConcreteClass", User.class);
         Assert.assertEquals("DienNM", user.getName());
         Assert.assertEquals("Tan Phu, Ho Chi Minh", user.getAddresses().get("home").getAddress());
         Assert.assertEquals("home", user.getAddresses().get("home").getAddressType());

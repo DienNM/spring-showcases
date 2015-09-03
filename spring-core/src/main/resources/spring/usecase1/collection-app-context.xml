@@ -52,10 +52,9 @@
 				<prop key="C">C Programming</prop>
 			</props>
 		</property>
-
 	</bean>
 
-	<bean id="user" class="com.dee.web.spring.usecase1.model.User">
+	<bean id="userExternalCollectionDefine" class="com.dee.web.spring.usecase1.model.User">
 		<property name="name" value="DienNM" />
 		<property name="userType" value="Admin" />
 		<property name="favourites" ref="favourites" />
@@ -93,5 +92,76 @@
 		<value>Reading</value>
 		<value>Travelling</value>
 	</util:set>
+
+	<bean id="userSpecificConcreteClass" class="com.dee.web.spring.usecase1.model.User">
+		<property name="name" value="DienNM" />
+		<property name="userType" value="Admin" />
+		<property name="favourites">
+			<bean class="org.springframework.beans.factory.config.SetFactoryBean">
+				<property name="targetSetClass">
+					<value>java.util.TreeSet</value>
+				</property>
+				<property name="sourceSet">
+					<set>
+						<value>Reading</value>
+						<value>Travelling</value>
+					</set>
+				</property>
+			</bean>
+
+		</property>
+		<property name="addresses">
+			<bean class="org.springframework.beans.factory.config.MapFactoryBean">
+				<property name="targetMapClass">
+					<value>java.util.HashMap</value>
+				</property>
+				<property name="sourceMap">
+					<map>
+						<entry>
+							<key>
+								<value>home</value>
+							</key>
+							<bean class="com.dee.web.spring.usecase1.model.Address"
+								scope="prototype">
+								<property name="addressType" value="home" />
+								<property name="address" value="Tan Phu, Ho Chi Minh" />
+							</bean>
+						</entry>
+						<entry>
+							<key>
+								<value>office</value>
+							</key>
+							<bean class="com.dee.web.spring.usecase1.model.Address"
+								scope="prototype">
+								<property name="addressType" value="office" />
+								<property name="address" value="Tan Binh, Ho Chi Minh" />
+							</bean>
+						</entry>
+					</map>
+				</property>
+			</bean>
+		</property>
+
+		<property name="phones">
+			<bean class="org.springframework.beans.factory.config.ListFactoryBean">
+				<property name="targetListClass">
+					<value>java.util.LinkedList</value>
+				</property>
+				<property name="sourceList">
+					<array>
+						<value>01659.xxx.xxx</value>
+						<value>0838.xxx.xxx</value>
+					</array>
+				</property>
+			</bean>
+		</property>
+
+		<property name="training">
+			<props>
+				<prop key="java">Java Programming</prop>
+				<prop key="C">C Programming</prop>
+			</props>
+		</property>
+	</bean>
 
 </beans>
