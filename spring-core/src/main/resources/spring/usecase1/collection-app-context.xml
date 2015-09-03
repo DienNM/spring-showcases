@@ -113,7 +113,7 @@
 		<property name="addresses">
 			<bean class="org.springframework.beans.factory.config.MapFactoryBean">
 				<property name="targetMapClass">
-					<value>java.util.HashMap</value>
+					<value>java.util.TreeMap</value>
 				</property>
 				<property name="sourceMap">
 					<map>
@@ -154,6 +154,58 @@
 					</array>
 				</property>
 			</bean>
+		</property>
+
+		<property name="training">
+			<props>
+				<prop key="java">Java Programming</prop>
+				<prop key="C">C Programming</prop>
+			</props>
+		</property>
+	</bean>
+
+
+
+
+
+	<!-- Using util -->
+	<bean id="userSpecificConcreteClass_2" class="com.dee.web.spring.usecase1.model.User">
+		<property name="name" value="DienNM" />
+		<property name="userType" value="Admin" />
+		<property name="favourites">
+			<util:set set-class="java.util.TreeSet">
+				<value>Reading</value>
+				<value>Travelling</value>
+			</util:set>
+		</property>
+		<property name="addresses">
+			<util:map map-class="java.util.TreeMap">
+				<entry>
+					<key>
+						<value>home</value>
+					</key>
+					<bean class="com.dee.web.spring.usecase1.model.Address" scope="prototype">
+						<property name="addressType" value="home" />
+						<property name="address" value="Tan Phu, Ho Chi Minh" />
+					</bean>
+				</entry>
+				<entry>
+					<key>
+						<value>office</value>
+					</key>
+					<bean class="com.dee.web.spring.usecase1.model.Address" scope="prototype">
+						<property name="addressType" value="office" />
+						<property name="address" value="Tan Binh, Ho Chi Minh" />
+					</bean>
+				</entry>
+			</util:map>
+		</property>
+
+		<property name="phones">
+			<util:list list-class="java.util.ArrayList">
+				<value>01659.xxx.xxx</value>
+				<value>0838.xxx.xxx</value>
+			</util:list>
 		</property>
 
 		<property name="training">
