@@ -5,8 +5,6 @@
             http://www.springframework.org/schema/util 
             http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 
-	<import resource="app-context.xml" />
-
 	<bean id="userPrototype" class="com.dee.web.spring.usecase1.model.User"
 		scope="prototype">
 		<property name="name" value="DienNM" />
