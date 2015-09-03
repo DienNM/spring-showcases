@@ -1,0 +1,12 @@
+<beans profile="dev" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<bean id="appConfig" class="com.dee.web.spring.usecase7.AppConfig">
+		<property name="cleanDb" value="true" />
+        <property name="profile" value="DEV" />
+		<property name="version" value="1.0.0-SNAPSHOT" />
+	</bean>
+
+</beans>
