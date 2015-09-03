@@ -9,7 +9,6 @@
 	   <property name="locations">
 	       <array>
 	           <value>classpath:spring/usecase3/external.properties</value>
-               <value>file:F:\source\github\spring-showcases\spring-core\src\main\resources\spring\usecase3\external_file.properties</value>
 	       </array>
 	   </property>
 	   

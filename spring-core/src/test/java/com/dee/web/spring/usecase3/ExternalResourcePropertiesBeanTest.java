@@ -26,11 +26,6 @@ public class ExternalResourcePropertiesBeanTest extends TestCase{
         Assert.assertEquals(20, threadPoolConfig.getMaxSize());
         Assert.assertEquals("DEE", threadPoolConfig.getPrefixName());
         Assert.assertEquals(10, threadPoolConfig.getIdleSize());
-        
-        AppConfig appConfig = appContext.getBean("appConfig", AppConfig.class);
-        Assert.assertEquals("1.0", appConfig.getVersion());
-        Assert.assertEquals("DEV", appConfig.getProfile());
-        
     }
     
 }

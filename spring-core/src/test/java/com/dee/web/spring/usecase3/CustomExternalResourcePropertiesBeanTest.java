@@ -29,14 +29,9 @@ public class CustomExternalResourcePropertiesBeanTest extends TestCase{
         Assert.assertEquals("DEE", threadPoolConfig.getPrefixName());
         Assert.assertEquals(10, threadPoolConfig.getIdleSize());
         
-        AppConfig appConfig = appContext.getBean("appConfig", AppConfig.class);
-        Assert.assertEquals("1.0", appConfig.getVersion());
-        Assert.assertEquals("DEV", appConfig.getProfile());
-        
         // Get properties
         
-        Assert.assertEquals("1.0", AppPropertiesPlacehober.getProperty("version"));
-        Assert.assertEquals("DEV", AppPropertiesPlacehober.getProperty("profile"));
+        Assert.assertEquals("DEE", AppPropertiesPlacehober.getProperty("thread.name.prefix"));
         
     }
     
