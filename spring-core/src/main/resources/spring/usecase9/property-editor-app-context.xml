@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+	<bean id="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="MM-dd-yyyy" />
+	</bean>
+
+	<bean id="schedule1" class="com.dee.web.spring.usecase9.Schedule">
+		<property name="name" value="Do X" />
+		<property name="startDate">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="09-03-2015" />
+			</bean>
+		</property>
+		<property name="endDate">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="09-10-2015" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Second Approach -->
+
+	<!-- Register -->
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="propertyEditorRegistrars">
+			<array>
+			     <bean  class = "com.dee.web.spring.usecase9.CustomDateEditorRegistrar"></bean>
+			</array>
+		</property>
+	</bean>
+
+	<bean id="schedule2" class="com.dee.web.spring.usecase9.Schedule">
+		<property name="name" value="Do Y" />
+		<property name="startDate" value="09-03-2015" />
+		<property name="endDate" value="09-10-2015" />
+	</bean>
+
+</beans>
