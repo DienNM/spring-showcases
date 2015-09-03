@@ -1,0 +1,11 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<bean id="handlerRegister" class="com.dee.web.spring.usecase5.HandlerRegister" />
+	
+    <bean id="episodeCrawler" class="com.dee.web.spring.usecase5.EpisodeCrawler" />
+    <bean id="seriesCrawler" class="com.dee.web.spring.usecase5.SeriesCrawler" />
+
+</beans>
