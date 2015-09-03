@@ -1,0 +1,11 @@
+# Example of Yaml
+
+
+version: 1.0
+profile: DEV
+    
+thread:
+    name:
+        prefix: DEE
+    init: 5
+    max: 20

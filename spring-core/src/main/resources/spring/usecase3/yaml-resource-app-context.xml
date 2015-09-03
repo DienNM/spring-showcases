@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<bean id="externalYamlClasspath"
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="locations">
+			<array>
+				<value>classpath:spring/usecase3/external.yaml</value>
+			</array>
+		</property>
+		<property name="propertiesPersister" ref="ymlPropertiesPersister" />
+		<property name="ignoreUnresolvablePlaceholders" value="false" />
+		<property name="ignoreResourceNotFound" value="false" />
+	</bean>
+	
+	<bean id="ymlPropertiesPersister" class="com.dee.web.spring.usecase3.config.YamlPropertiesPersister" />
+
+	<bean id="appConfig" class="com.dee.web.spring.usecase3.AppConfig">
+		<property name="version" value="${version}" />
+		<property name="profile" value="${profile}" />
+	</bean>
+
+	<bean id="threadPoolConfig" class="com.dee.web.spring.usecase3.ThreadPoolConfig">
+		<property name="initSize" value="${thread.init}" />
+		<property name="maxSize" value="${thread.max}" />
+		<property name="prefixName" value="${thread.name.prefix}" />
+		<property name="idleSize" value="${thread.idle:10}" />
+	</bean>
+
+</beans>

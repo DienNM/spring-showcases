@@ -5,7 +5,7 @@
             http://www.springframework.org/schema/util 
             http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 
-	<bean id="userInnerCollectionConfiguration" class="com.dee.web.spring.usecase1.model.User">
+	<bean id="userInnerCollectionConfiguration" class="com.dee.web.spring.usecase1.User">
 		<property name="name" value="DienNM" />
 		<property name="userType" value="Admin" />
 		<property name="favourites">
@@ -20,7 +20,7 @@
 					<key>
 						<value>home</value>
 					</key>
-					<bean class="com.dee.web.spring.usecase1.model.Address" scope="prototype">
+					<bean class="com.dee.web.spring.usecase1.Address" scope="prototype">
 						<property name="addressType" value="home" />
 						<property name="address" value="Tan Phu, Ho Chi Minh" />
 					</bean>
@@ -29,7 +29,7 @@
 					<key>
 						<value>office</value>
 					</key>
-					<bean class="com.dee.web.spring.usecase1.model.Address" scope="prototype">
+					<bean class="com.dee.web.spring.usecase1.Address" scope="prototype">
 						<property name="addressType" value="office" />
 						<property name="address" value="Tan Binh, Ho Chi Minh" />
 					</bean>
@@ -51,7 +51,7 @@
 		</property>
 	</bean>
 
-	<bean id="userExternalCollectionDefine" class="com.dee.web.spring.usecase1.model.User">
+	<bean id="userExternalCollectionDefine" class="com.dee.web.spring.usecase1.User">
 		<property name="name" value="DienNM" />
 		<property name="userType" value="Admin" />
 		<property name="favourites" ref="favourites" />
@@ -67,13 +67,13 @@
 
 	<util:map id="addresses">
 		<entry key="home">
-			<bean class="com.dee.web.spring.usecase1.model.Address" scope="prototype">
+			<bean class="com.dee.web.spring.usecase1.Address" scope="prototype">
 				<property name="addressType" value="home" />
 				<property name="address" value="Tan Phu, Ho Chi Minh" />
 			</bean>
 		</entry>
 		<entry key="office">
-			<bean class="com.dee.web.spring.usecase1.model.Address" scope="prototype">
+			<bean class="com.dee.web.spring.usecase1.Address" scope="prototype">
 				<property name="addressType" value="office" />
 				<property name="address" value="Tan Binh, Ho Chi Minh" />
 			</bean>
@@ -90,7 +90,7 @@
 		<value>Travelling</value>
 	</util:set>
 
-	<bean id="userSpecificConcreteClass" class="com.dee.web.spring.usecase1.model.User">
+	<bean id="userSpecificConcreteClass" class="com.dee.web.spring.usecase1.User">
 		<property name="name" value="DienNM" />
 		<property name="userType" value="Admin" />
 		<property name="favourites">
@@ -118,7 +118,7 @@
 							<key>
 								<value>home</value>
 							</key>
-							<bean class="com.dee.web.spring.usecase1.model.Address"
+							<bean class="com.dee.web.spring.usecase1.Address"
 								scope="prototype">
 								<property name="addressType" value="home" />
 								<property name="address" value="Tan Phu, Ho Chi Minh" />
@@ -128,7 +128,7 @@
 							<key>
 								<value>office</value>
 							</key>
-							<bean class="com.dee.web.spring.usecase1.model.Address"
+							<bean class="com.dee.web.spring.usecase1.Address"
 								scope="prototype">
 								<property name="addressType" value="office" />
 								<property name="address" value="Tan Binh, Ho Chi Minh" />
@@ -166,7 +166,7 @@
 
 
 	<!-- Using util -->
-	<bean id="userSpecificConcreteClass_2" class="com.dee.web.spring.usecase1.model.User">
+	<bean id="userSpecificConcreteClass_2" class="com.dee.web.spring.usecase1.User">
 		<property name="name" value="DienNM" />
 		<property name="userType" value="Admin" />
 		<property name="favourites">
@@ -181,7 +181,7 @@
 					<key>
 						<value>home</value>
 					</key>
-					<bean class="com.dee.web.spring.usecase1.model.Address" scope="prototype">
+					<bean class="com.dee.web.spring.usecase1.Address" scope="prototype">
 						<property name="addressType" value="home" />
 						<property name="address" value="Tan Phu, Ho Chi Minh" />
 					</bean>
@@ -190,7 +190,7 @@
 					<key>
 						<value>office</value>
 					</key>
-					<bean class="com.dee.web.spring.usecase1.model.Address" scope="prototype">
+					<bean class="com.dee.web.spring.usecase1.Address" scope="prototype">
 						<property name="addressType" value="office" />
 						<property name="address" value="Tan Binh, Ho Chi Minh" />
 					</bean>
