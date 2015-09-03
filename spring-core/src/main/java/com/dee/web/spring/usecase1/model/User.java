@@ -2,6 +2,7 @@ package com.dee.web.spring.usecase1.model;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import com.dee.web.spring.usecase1.UserType;
@@ -24,6 +25,8 @@ public class User {
     private Map<String, Address> addresses;
     
     private List<String> phones;
+    
+    private Properties training;
     
     public User() {
     }
@@ -79,6 +82,14 @@ public class User {
 
     public void setPhones(List<String> phones) {
         this.phones = phones;
+    }
+
+    public Properties getTraining() {
+        return training;
+    }
+
+    public void setTraining(Properties training) {
+        this.training = training;
     }
 
 }
