@@ -1,4 +1,4 @@
-package com.dee.web.spring.usecase1.model;
+package com.dee.web.spring.usecase1;
 
 /**
  * @author dien.nguyen

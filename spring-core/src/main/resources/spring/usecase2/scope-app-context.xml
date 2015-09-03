@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+    
+    <bean id="employeeSingleton" class="com.dee.web.spring.usecase2.Employee" scope="singleton">
+        <property name="name" value="DienNM" />
+        <property name="email" value="nmdien61@gmail.com" />
+    </bean>
+    
+    <bean id="employeePrototype" class="com.dee.web.spring.usecase2.Employee" scope="prototype">
+        <property name="name" value="DienNM" />
+        <property name="email" value="nmdien61@gmail.com" />
+    </bean>
+    
+</beans>

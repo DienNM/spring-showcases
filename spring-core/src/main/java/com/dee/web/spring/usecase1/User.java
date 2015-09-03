@@ -1,11 +1,9 @@
-package com.dee.web.spring.usecase1.model;
+package com.dee.web.spring.usecase1;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
-
-import com.dee.web.spring.usecase1.UserType;
 
 
 /**

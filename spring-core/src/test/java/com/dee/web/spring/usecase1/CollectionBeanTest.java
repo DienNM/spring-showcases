@@ -13,13 +13,11 @@ import org.junit.Assert;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import com.dee.web.spring.usecase1.model.User;
-
 /**
  * @author dien.nguyen
  **/
 
-public class CollectionBeanExample extends TestCase{
+public class CollectionBeanTest extends TestCase{
     
     private ApplicationContext appContext;
     
@@ -29,7 +27,7 @@ public class CollectionBeanExample extends TestCase{
     }
     
     public void testSetCollectionInLine() {
-        User user = appContext.getBean("userPrototype", User.class);
+        User user = appContext.getBean("userInnerCollectionConfiguration", User.class);
         Assert.assertEquals("DienNM", user.getName());
         
         Assert.assertTrue(user.getAddresses() instanceof HashMap);

@@ -5,8 +5,7 @@
             http://www.springframework.org/schema/util 
             http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 
-	<bean id="userPrototype" class="com.dee.web.spring.usecase1.model.User"
-		scope="prototype">
+	<bean id="userInnerCollectionConfiguration" class="com.dee.web.spring.usecase1.model.User">
 		<property name="name" value="DienNM" />
 		<property name="userType" value="Admin" />
 		<property name="favourites">
