@@ -16,4 +16,8 @@
         + Using @PropertyResource to inject external resources into application
         + @Value("${key:default_value}") is used to inject value field
 
+    - usecase4:
+    
+        + Example of using MessageSource to resolve locatization
+
 
