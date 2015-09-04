@@ -20,6 +20,7 @@ public class BeansInteractionBeanTest extends TestCase{
     }
     
     public void testCreateUserBean() {
+        
         Class2 class2 = appContext.getBean("class2", Class2.class);
         Assert.assertNotNull(class2);
         Assert.assertNotNull(class2.getClass1());
@@ -30,6 +31,10 @@ public class BeansInteractionBeanTest extends TestCase{
         
         Class3 class3 = appContext.getBean("class3", Class3.class);
         Assert.assertNotNull(class3);
+        
+        Class4 class4 = appContext.getBean("class4", Class4.class);
+        Assert.assertNotNull(class4);
+        Assert.assertNotNull(class4.getClass2());
         
     }
     
