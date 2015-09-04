@@ -11,6 +11,7 @@
 	<context:component-scan base-package="com.dee.web.spring.usecase1.controller" />
 	<context:component-scan base-package="com.dee.web.spring.usecase2.controller" />
 	<context:component-scan base-package="com.dee.web.spring.usecase3.controller" />
+    <context:component-scan base-package="com.dee.web.spring.usecase4.controller" />
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>
