@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.dee.web</groupId>
 	<artifactId>spring-rest</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>1.0.0</version>
 	<name>spring-rest</name>
 	<url>https://github.com/DienNM</url>
@@ -37,6 +37,24 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.yaml</groupId>
@@ -44,6 +62,11 @@
 			<version>1.10</version>
 		</dependency>
 
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.6.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -55,5 +78,29 @@
 
 	<build>
 		<finalName>${artifactId}-${version}</finalName>
+		<plugins>
+
+			<!-- Jetty Plugin -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.11.v20150529</version>
+				<configuration>
+					<webApp>
+						<contextPath>/spring-rest</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+
+			<!-- Tomcat Plugin -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/spring-rest</path>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
