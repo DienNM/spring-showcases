@@ -1,5 +1,7 @@
 package com.dee.web.spring.usecase3;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -12,6 +14,8 @@ public class Course {
     private String subject;
     
     private int length;
+    
+    private Date startDate;
     
     public Course() {
     }
@@ -35,6 +39,14 @@ public class Course {
 
     public void setLength(int length) {
         this.length = length;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
     
 }

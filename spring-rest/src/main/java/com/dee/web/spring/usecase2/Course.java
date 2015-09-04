@@ -1,6 +1,7 @@
 package com.dee.web.spring.usecase2;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -14,6 +15,8 @@ public class Course implements Serializable {
     private String subject;
     
     private int length;
+    
+    private Date startDate;
     
     public Course() {
     }
@@ -37,6 +40,14 @@ public class Course implements Serializable {
 
     public void setLength(int length) {
         this.length = length;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
     
 }

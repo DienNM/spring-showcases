@@ -1,6 +1,7 @@
 package com.dee.web.spring.usecase3.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +25,31 @@ public class StudentServiceImpl implements StudentService {
 
     @PostConstruct
     public void initData() {
+Calendar calendar = Calendar.getInstance();
+        
         Course course1 = new Course("course1", 5);
+        calendar.set(Calendar.DAY_OF_MONTH, 10);
+        course1.setStartDate(calendar.getTime());
+        
         Course course2 = new Course("course2", 10);
+        calendar.set(Calendar.DAY_OF_MONTH, 4);
+        course2.setStartDate(calendar.getTime());
+        
         Course course3 = new Course("course3", 12);
+        calendar.set(Calendar.DAY_OF_MONTH, 6);
+        course3.setStartDate(calendar.getTime());
+        
         Course course4 = new Course("course4", 7);
+        calendar.set(Calendar.DAY_OF_MONTH, 15);
+        course4.setStartDate(calendar.getTime());
+        
         Course course5 = new Course("course5", 2);
-        Course course6 = new Course("course6", 10);
+        calendar.set(Calendar.DAY_OF_MONTH, 7);
+        course5.setStartDate(calendar.getTime());
+        
+        Course course6 = new Course("course6", 20);
+        calendar.set(Calendar.DAY_OF_MONTH, 10);
+        course6.setStartDate(calendar.getTime());
 
         Student student1 = new Student("Student 1");
         student1.setId(1L);
