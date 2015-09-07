@@ -31,11 +31,16 @@ public class JDBCStudentServiceImpl implements JDBCStudentService {
 
     @Override
     public void update(JdbcStudent student) {
-        studentDao.update(student);
+        studentDao.updateWithPreparedStmCreator(student);
     }
 
     @Override
     public void delete(JdbcStudent student) {
         studentDao.delete(student);
+    }
+
+    @Override
+    public void update2(JdbcStudent student) {
+        studentDao.updateWithPreparedStmSetter(student);
     }
 }

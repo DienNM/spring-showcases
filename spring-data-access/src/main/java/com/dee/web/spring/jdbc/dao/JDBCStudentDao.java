@@ -12,7 +12,9 @@ public interface JDBCStudentDao {
     
     void insert(JdbcStudent student);
     
-    void update(JdbcStudent student);
+    void updateWithPreparedStmCreator(JdbcStudent student);
+    
+    void updateWithPreparedStmSetter(JdbcStudent student);
     
     void delete(JdbcStudent student);
     

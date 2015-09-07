@@ -50,6 +50,15 @@ public class SpringJdbc1Test extends TestCase {
         Assert.assertEquals("DienNM-DEE", pStudent.getName());
         Assert.assertEquals("nmdien61@gmail.com", pStudent.getEmail());
         
+        // Update 2
+        pStudent.setName("DEE");
+        studentService.update2(pStudent);
+        
+        pStudent = studentService.getById(student.getId());
+        Assert.assertNotNull(pStudent);
+        Assert.assertEquals("DEE", pStudent.getName());
+        Assert.assertEquals("nmdien61@gmail.com", pStudent.getEmail());
+        
         // DELETE
         studentService.delete(pStudent);
         pStudent = studentService.getById(student.getId());

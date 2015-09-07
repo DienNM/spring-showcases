@@ -9,6 +9,9 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Repository;
 
 import com.dee.web.spring.jdbc.dao.JDBCStudentDao;
@@ -20,23 +23,23 @@ import com.dee.web.spring.jdbc.model.JdbcStudent;
 
 @Repository("jdbcStudentDao")
 public class JDBCStudentDaoImpl implements JDBCStudentDao {
-    
+
     @Autowired
     @Qualifier("dataSource")
     private DataSource dataSource;
-    
+
     @Override
     public JdbcStudent findById(int studentId) {
         String sql = "SELECT id, name, email FROM STUDENT WHERE id = ?";
-        Connection connection  = null;
+        Connection connection = null;
         try {
             connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, studentId);
-            
+
             JdbcStudent student = null;
             ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 student = new JdbcStudent();
                 student.setId(rs.getInt(1));
                 student.setName(rs.getString(2));
@@ -66,7 +69,7 @@ public class JDBCStudentDaoImpl implements JDBCStudentDao {
             ps.setString(3, student.getEmail());
             ps.executeUpdate();
             ps.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             try {
@@ -75,27 +78,40 @@ public class JDBCStudentDaoImpl implements JDBCStudentDao {
             }
         }
     }
-
+    
     @Override
-    public void update(JdbcStudent student) {
-        String sql = "UPDATE STUDENT SET name = ?, email = ? WHERE id = ?";
-        Connection connection = null;
-        try {
-            connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, student.getName());
-            ps.setString(2, student.getEmail());
-            ps.setInt(3, student.getId());
-            ps.executeUpdate();
-            ps.close();
-        } catch(SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
+    public void updateWithPreparedStmCreator(final JdbcStudent student) {
+        // Using JDBC Template of Spring
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.update(new PreparedStatementCreator() {
+
+            @Override
+            public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
+                String sql = "UPDATE STUDENT SET name = ?, email = ? WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1, student.getName());
+                ps.setString(2, student.getEmail());
+                ps.setInt(3, student.getId());
+                return ps;
             }
-        }
+        });
+
+    }
+    
+    @Override
+    public void updateWithPreparedStmSetter(final JdbcStudent student) {
+        String sql = "UPDATE STUDENT SET name = ?, email = ? WHERE id = ?";
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.update(sql, new PreparedStatementSetter() {
+
+            @Override
+            public void setValues(PreparedStatement ps) throws SQLException {
+                ps.setString(1, student.getName());
+                ps.setString(2, student.getEmail());
+                ps.setInt(3, student.getId());
+            }
+            
+        });
     }
 
     @Override
@@ -108,7 +124,7 @@ public class JDBCStudentDaoImpl implements JDBCStudentDao {
             ps.setInt(1, student.getId());
             ps.executeUpdate();
             ps.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             try {

@@ -13,6 +13,8 @@ public interface JDBCStudentService {
     void save(JdbcStudent student);
     
     void update(JdbcStudent student);
+
+    void update2(JdbcStudent student);
     
     void delete(JdbcStudent student);
     
