@@ -48,14 +48,14 @@
 	
 	<tx:advice id = "studentTxAdvice" transaction-manager="transactionManager">
 	   <tx:attributes>
-	       <tx:method name="insert"/>
-	       <tx:method name="update"/>
-           <tx:method name="deleteAll"/>
+	       <tx:method name="save" propagation="REQUIRED"/>
+	       <tx:method name="update" propagation="REQUIRED"/>
+           <tx:method name="deleteAll" propagation="REQUIRED"/>
 	   </tx:attributes>
 	</tx:advice>
 	
 	<aop:config>
-	   <aop:pointcut id="studentOperator" expression="execution(* com.dee.web.spring.tx.dao.impl.JdbcStudentDaoImpl.*(..))" />
+	   <aop:pointcut id="studentOperator" expression="execution(* com.dee.web.spring.tx.service.impl.JdbcStudentServiceImpl.*(..))" />
 	   <aop:advisor advice-ref="studentTxAdvice" pointcut-ref="studentOperator"/>
 	</aop:config>
 
