@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.dee.web</groupId>
 	<artifactId>spring-data-access</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>1.0.0</version>
 	<name>spring-data-access</name>
 	<url>https://github.com/DienNM</url>
@@ -22,6 +22,7 @@
 
 	<properties>
 		<spring.version>4.1.7.RELEASE</spring.version>
+		<db.mysql.version>5.1.36</db.mysql.version>
 		<junit.version>4.12</junit.version>
 	</properties>
 
@@ -36,6 +37,25 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${db.mysql.version}</version>
 		</dependency>
 
 		<dependency>
