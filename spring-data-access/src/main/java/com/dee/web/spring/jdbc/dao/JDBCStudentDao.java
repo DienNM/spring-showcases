@@ -1,5 +1,7 @@
 package com.dee.web.spring.jdbc.dao;
 
+import java.util.List;
+
 import com.dee.web.spring.jdbc.model.JdbcStudent;
 
 /**
@@ -8,14 +10,24 @@ import com.dee.web.spring.jdbc.model.JdbcStudent;
 
 public interface JDBCStudentDao {
     
+    int count();
+    
+    String findEmail(int id);
+    
+    List<JdbcStudent> findAll();
+    
     JdbcStudent findById(int studentId);
+    
+    JdbcStudent findByEmail(String email);
     
     void insert(JdbcStudent student);
     
-    void updateWithPreparedStmCreator(JdbcStudent student);
+    void insert(List<JdbcStudent> students);
     
-    void updateWithPreparedStmSetter(JdbcStudent student);
+    void update(JdbcStudent student);
     
     void delete(JdbcStudent student);
+    
+    void deleteAll();
     
 }
