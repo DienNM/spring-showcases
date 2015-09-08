@@ -1,38 +1,24 @@
 package com.dee.spring.messaging.integration.msgdriven;
 
-import javax.jms.MapMessage;
-import javax.jms.Message;
-import javax.jms.MessageListener;
+import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.stereotype.Service;
 
 /**
  * @author dien.nguyen
  **/
-
 @Service("msgDrivenQuenReceiverService")
-public class MsgDrivenQuenReceiverService implements MessageListener{
-
-    @Autowired
-    private MessageConverter messageConverter;
+public class MsgDrivenQuenReceiverService{
     
-    @Override
-    public void onMessage(Message message) {
-        MapMessage mapMessage = (MapMessage) message;
-        if(mapMessage != null) {
-            try {
-               com.dee.spring.messaging.Message buMessage = 
-                       (com.dee.spring.messaging.Message) messageConverter.fromMessage(mapMessage);
-               
-               System.out.println("Title: " + buMessage.getTitle());
-               System.out.println("Message: " + buMessage.getMessage());
-               
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
+    public void receive(Map<String, String> map) {
+        com.dee.spring.messaging.Message buMessage = new com.dee.spring.messaging.Message();
+        buMessage.setTitle(map.get("title"));
+        buMessage.setMessage(map.get("message"));
+        
+        System.out.println("=======================================");
+        System.out.println("Message from: msgDrivenQuenReceiverService");
+        System.out.println("Title: " + buMessage.getTitle());
+        System.out.println("Message: " + buMessage.getMessage());
     }
-
+    
 }

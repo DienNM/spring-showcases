@@ -25,7 +25,19 @@
 	<bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
 		<property name="connectionFactory" ref="jmsConnectionFactory" />
 		<property name="destination" ref="integrationQueue" />
-		<property name="messageListener" ref="msgDrivenQuenReceiverService" />
+		<property name="messageListener" ref="msgDrivenQuenReceiverListener" />
 	</bean>
+
+	<bean id="messageListenerAdapter"
+		class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+		<property name="delegate" ref="msgDrivenQuenReceiverService" />
+		<property name="defaultListenerMethod" value="receive" />
+	</bean>
+
+	<!-- Using in the case of Transaction -->
+	<!-- <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer"> 
+		<property name="connectionFactory" ref="jmsConnectionFactory" /> <property 
+		name="destination" ref="integrationQueue" /> <property name="messageListener" 
+		ref="msgDrivenQuenReceiverService" /> </bean> -->
 
 </beans>
