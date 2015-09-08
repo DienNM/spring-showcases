@@ -26,12 +26,15 @@
 
 	<bean id="messageListener"
 		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="transactionManager" ref="transactionManager" />
 		<property name="connectionFactory" ref="jmsConnectionFactory" />
 		<property name="destination" ref="integrationTopic" />
 		<property name="messageListener" ref="msgDrivenTopicReceiverListener" />
 		<property name="sessionTransacted" value="true" />
 	</bean>
-
-
+    
+    <bean id="transactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
+        <property name="connectionFactory" ref="jmsConnectionFactory" />
+    </bean>
 
 </beans>
