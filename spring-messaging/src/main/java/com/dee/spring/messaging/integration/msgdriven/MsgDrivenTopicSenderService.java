@@ -17,8 +17,8 @@ import com.dee.spring.messaging.SenderService;
  * @author dien.nguyen
  **/
 
-@Service("msgDrivenQueueSenderService")
-public class MsgDrivenQueueSenderService implements SenderService{
+@Service("msgDrivenTopicSenderService")
+public class MsgDrivenTopicSenderService implements SenderService{
     
     @Autowired
     private JmsTemplate jmsTemplate;

@@ -1,4 +1,4 @@
-package com.dee.spring.messaging.integration.msgdriven;
+package com.dee.spring.messaging.integration.msgdriventrans;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -14,7 +14,7 @@ public class MainRunner {
     static ApplicationContext appCtx;
 
     public static void main(String[] args) {
-        appCtx = new GenericXmlApplicationContext("/spring/integration/msgdriven/app-context.xml");
+        appCtx = new GenericXmlApplicationContext("/spring/integration/msgdriventrans/app-context.xml");
 
         SenderService senderService = appCtx.getBean("msgDrivenTopicSenderService", SenderService.class);
 

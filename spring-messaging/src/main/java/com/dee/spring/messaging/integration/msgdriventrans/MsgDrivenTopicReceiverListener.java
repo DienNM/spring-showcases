@@ -1,4 +1,4 @@
-package com.dee.spring.messaging.integration.msgdriven;
+package com.dee.spring.messaging.integration.msgdriventrans;
 
 import javax.jms.MapMessage;
 import javax.jms.Message;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
  * @author dien.nguyen
  **/
 
-@Service("msgDrivenQuenReceiverListener")
-public class MsgDrivenQuenReceiverListener implements MessageListener{
+@Service("msgDrivenTopicReceiverListener")
+public class MsgDrivenTopicReceiverListener implements MessageListener{
 
     @Autowired
     private MessageConverter messageConverter;

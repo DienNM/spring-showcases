@@ -1,0 +1,37 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-4.1.xsd
+            http://www.springframework.org/schema/jms 
+            http://www.springframework.org/schema/jms/spring-jms-4.1.xsd">
+
+	<context:component-scan
+		base-package="com.dee.spring.messaging.integration.msgdriventrans" />
+
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<constructor-arg name="brokerURL" value="tcp://localhost:61616" />
+	</bean>
+
+	<bean id="integrationTopic" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg name="name" value="dee.integration.topic_driven" />
+	</bean>
+
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="receiveTimeout" value="1000" />
+	</bean>
+
+	<bean id="messageListener"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="destination" ref="integrationTopic" />
+		<property name="messageListener" ref="msgDrivenTopicReceiverListener" />
+		<property name="sessionTransacted" value="true" />
+	</bean>
+
+
+
+</beans>
