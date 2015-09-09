@@ -1,11 +1,14 @@
-package com.dee.spring.testing.basic1;
+package com.dee.spring.testing.basic1.dao;
 
 
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
+import com.dee.spring.testing.basic1.DuplicateStudentException;
+import com.dee.spring.testing.basic1.Student;
+import com.dee.spring.testing.basic1.StudentNotFoundException;
 import com.dee.spring.testing.basic1.dao.StudentDao;
 import com.dee.spring.testing.basic1.dao.impl.InMemoryStudentDao;
 
@@ -13,7 +16,7 @@ import com.dee.spring.testing.basic1.dao.impl.InMemoryStudentDao;
  * @author dien.nguyen
  **/
 
-public class StudentDaoTestNGTest {
+public class StudentDaoJUnit4Test {
     
     private final static long ID1 = 1;
     private final static long ID2 = 2;
@@ -24,20 +27,22 @@ public class StudentDaoTestNGTest {
     private Student student1;
     private Student student2;
     
-    @BeforeMethod
+    @Before
     public void startUp() {
         student1 = new Student();
         student1.setId(ID1);
         student1.setEmail("nmdien61@gmail.com");
+        student1.setActive(true);
         
         student2 = new Student();
         student2.setId(ID2);
         student2.setEmail("nguyenminhdien1506@gmail.com");
+        student2.setActive(true);
         
         studentDao = new InMemoryStudentDao();
     }
     
-    @AfterMethod
+    @After
     public void tearDao() {
         studentDao.delete(student1);
         studentDao.delete(student2);
@@ -52,7 +57,7 @@ public class StudentDaoTestNGTest {
         Assert.assertEquals("nguyenminhdien1506@gmail.com", studentDao.findById(ID2).getEmail());
     }
     
-    @Test(expectedExceptions = DuplicateStudentException.class)
+    @Test(expected = DuplicateStudentException.class)
     public void insertDuplicated() {
         studentDao.insert(student1);
         Assert.assertEquals("nmdien61@gmail.com", studentDao.findById(ID1).getEmail());
@@ -72,7 +77,7 @@ public class StudentDaoTestNGTest {
         Assert.assertEquals("nmdien@gmail.com", pStudent.getEmail());
     }
 
-    @Test(expectedExceptions = StudentNotFoundException.class)
+    @Test(expected = StudentNotFoundException.class)
     public void updateNotFound() {
         studentDao.insert(student1);
         Assert.assertEquals("nmdien61@gmail.com", studentDao.findById(ID1).getEmail());
