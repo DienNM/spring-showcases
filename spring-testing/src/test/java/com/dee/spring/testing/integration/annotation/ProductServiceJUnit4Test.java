@@ -1,23 +1,21 @@
-package com.dee.spring.testing.integration.xml.case1;
+package com.dee.spring.testing.integration.annotation;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Timed;
 
 import com.dee.spring.testing.global.exception.DuplicatedEntityException;
 import com.dee.spring.testing.global.exception.EntityNotFoundException;
 import com.dee.spring.testing.global.model.Product;
 import com.dee.spring.testing.global.service.ProductService;
-import com.dee.spring.testing.integration.xml.IntegrationSpringJUnit4TestCase1;
 
 /**
  * @author dien.nguyen
  **/
 
-public class ProductServiceJUnit4Test extends IntegrationSpringJUnit4TestCase1 {
+public class ProductServiceJUnit4Test extends IntegrationSpringJUnit4TestCase {
     
     private final static Long ID_SAVED = 1L;
     private final static Long ID_TRANS = 2L;
@@ -54,12 +52,7 @@ public class ProductServiceJUnit4Test extends IntegrationSpringJUnit4TestCase1 {
     }
     
     @Test
-    @Timed(millis = 1001) // Example of using @Timed
     public void save() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-        }
         productService.add(productTransient);
         Assert.assertNotNull(productService.get(ID_TRANS));
         Assert.assertEquals("Product 2", productService.get(ID_TRANS).getName());

@@ -34,7 +34,6 @@ public class ProductServiceTestNGTest extends IntegrationSpringTestNGTestCase1 {
         productSaved.setName("Product 1");
         productSaved.setQuantity(1);
         productService.add(productSaved);
-        
     }
     
     @AfterMethod
