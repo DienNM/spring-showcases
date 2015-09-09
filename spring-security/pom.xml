@@ -22,7 +22,7 @@
 
 	<properties>
 		<spring.version>4.1.7.RELEASE</spring.version>
-        <spring.security.version>4.0.0.RELEASE</spring.security.version>
+		<spring.security.version>4.0.0.RELEASE</spring.security.version>
 		<junit.version>4.12</junit.version>
 	</properties>
 
@@ -53,6 +53,17 @@
 			<artifactId>spring-security-core</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+		</dependency>
+
 
 
 		<dependency>

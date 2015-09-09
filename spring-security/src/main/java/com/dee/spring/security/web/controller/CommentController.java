@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,13 +49,17 @@ public class CommentController {
     }
 
     @RequestMapping(value = "/post", method = RequestMethod.GET)
-    public String getPostCommentForm(Model model) {
+    public String setUpPostForm(Model model) {
         model.addAttribute("comment", new CommentModel());
         return "comment_post";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String postComment(@ModelAttribute("comment") CommentModel comment, RedirectAttributes redirectAtt) {
+    public String postComment(@ModelAttribute("comment") CommentModel comment, RedirectAttributes redirectAtt, 
+            BindingResult result) {
+        if(result.hasErrors()) {
+            return "redirect:/comments/post"; 
+        }
         try {
             commentService.post(comment);
             redirectAtt.addAttribute(SUCCESS_K, "Posted the comment successfully");
