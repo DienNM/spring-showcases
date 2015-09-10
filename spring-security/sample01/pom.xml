@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.dee.web</groupId>
-	<artifactId>spring-security</artifactId>
+	<artifactId>spring-security-s01</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>spring-security</name>
+	<name>spring-security-s01</name>
 	<url>https://github.com/DienNM</url>
 
 	<developers>
