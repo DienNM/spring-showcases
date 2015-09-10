@@ -2,6 +2,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 
@@ -14,9 +15,29 @@
 <body>
 
 <h1>List of Comments</h1>
+<sec:authorize access="authenticated" var="authenticated"/>
+<c:choose>
+    <c:when test="${authenticated}">
+        <li>
+            <div>Welcome <sec:authentication property="name" /></div>
+        </li>
+    </c:when>
+    <c:otherwise>
+        <c:url var="loginUrl" value="/login/form"/>
+        <li>
+            <a href="${loginUrl}">Login</a>
+        </li>
+    </c:otherwise>
+</c:choose>
+
 
 <c:url var="postCommentUrl"  value="/comments/post" />
-<a href="${postCommentUrl}">New Comment</a>
+<c:url var="logoutUrl"  value="/logout" />
+
+
+
+<a href="${postCommentUrl}">New Comment</a> 
+<a href="${logoutUrl}">Logout</a>
 
 <table border="1">
     <thead>

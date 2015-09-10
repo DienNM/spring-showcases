@@ -9,11 +9,20 @@
             http://www.springframework.org/schema/security
             http://www.springframework.org/schema/security/spring-security-4.0.xsd">
     
-    
+    <http pattern="/resources/**" security="none"></http>
     <http auto-config="true" use-expressions="false">
+        <form-login login-page="/login/form" login-processing-url="/login" 
+                    default-target-url="/comments"
+                    authentication-failure-url="/login/form?error"
+                    password-parameter="password" username-parameter="email" />
+                    
+        <logout invalidate-session="true" logout-success-url="/comments" logout-url="/logout"/>
+    
         <intercept-url pattern="/comments/post*" access="ROLE_ADMIN" />
         <intercept-url pattern="/comments/*" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/comments*" access="ROLE_USER,ROLE_ANONYMOUS" />
+        
+        <csrf disabled="true"/>
     </http>
     <authentication-manager>
         <authentication-provider>
