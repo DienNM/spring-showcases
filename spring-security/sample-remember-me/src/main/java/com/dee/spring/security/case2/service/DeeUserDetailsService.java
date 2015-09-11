@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.dee.spring.security.case2.dto.DeeUserDetails;
 import com.dee.spring.security.model.DeeUser;
+import com.dee.spring.security.model.DeeUserDetails;
 import com.dee.spring.security.service.DeeUserService;
 
 /**

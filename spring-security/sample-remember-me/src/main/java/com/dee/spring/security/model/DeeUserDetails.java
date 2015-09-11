@@ -1,11 +1,10 @@
-package com.dee.spring.security.case1.dto;
+package com.dee.spring.security.model;
 
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.dee.spring.security.model.DeeUser;
 import com.dee.spring.security.util.DeeUserAuthorityUtil;
 
 /**

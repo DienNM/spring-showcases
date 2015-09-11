@@ -33,10 +33,11 @@
 	    </tr>
 	    <tr>
             <th width="120">Remember Me?</th>
-            <td><input type="checkbox" name="rememberMe" /></td>
+            <td>
+                <input type="checkbox" name="rememberMe" />
+                <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}" />
+            </td>
         </tr>
-	    <%-- <input type="hidden" 
-	                     name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 	    
 	    <tr>
 	        <td colspan="2"><button type="submit">Login</button></td>

@@ -12,8 +12,10 @@
     <http pattern="/resources/**" security="none"></http>
     <http auto-config="true" use-expressions="false">
         
-        <remember-me key="" remember-me-parameter="rememberMe" />
-    
+        <remember-me key="29R4kZXzjsa3NEtLd4n5WqRSkSJQU4mT" 
+            remember-me-parameter="rememberMe"
+            token-validity-seconds="86400"/>
+
         <form-login login-page="/login/form" login-processing-url="/login" 
                     default-target-url="/comments"
                     authentication-failure-url="/login/form?error"
@@ -25,11 +27,12 @@
         <intercept-url pattern="/comments/*" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/comments*" access="ROLE_USER,ROLE_ANONYMOUS" />
         
-        <csrf disabled="true"/>
+        <csrf />
     </http>
     
     <authentication-manager>
-        <authentication-provider ref="deeAuthenticationProvider" />
+        <authentication-provider user-service-ref="deeUserDetailsService" />
     </authentication-manager>
+    
     
 </beans:beans>
