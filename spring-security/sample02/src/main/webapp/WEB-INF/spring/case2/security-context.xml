@@ -28,4 +28,9 @@
         <authentication-provider user-service-ref="deeUserDetailsService" />
     </authentication-manager>
     
+    
+    <!-- <authentication-manager>
+        <authentication-provider ref="deeAuthenticationProvider" />
+    </authentication-manager> -->
+    
 </beans:beans>

@@ -9,9 +9,9 @@
 <title>Login</title>
 </head>
 <body>
+<%@include file="header.jsp" %>
 
 <h1>Login</h1>
-
 <c:url var="loginActionUrl" value="/login" />
 <form action="${loginActionUrl}" method="POST">
 

@@ -2,7 +2,6 @@ package com.dee.spring.security.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.dee.spring.security.model.DeeUser;
-import com.dee.spring.security.service.DeeUserService;
 import com.dee.spring.security.service.UserContext;
 import com.dee.spring.security.util.DeeUserAuthorityUtil;
 
@@ -21,21 +19,17 @@ import com.dee.spring.security.util.DeeUserAuthorityUtil;
  * @author dien.nguyen
  **/
 
-@Service("springSecurityUserContext")
-public class SpringSecurityUserContext implements UserContext {
+@Service("deeUserContext")
+public class DeeUserContext implements UserContext {
     
-    @Autowired
-    private DeeUserService deeUserService;
-
     @Override
     public DeeUser getCurrentUser() {
-        
         SecurityContext securityContext = SecurityContextHolder.getContext();
         Authentication authen = securityContext.getAuthentication();
         if(authen == null) {
             return null;
         }
-        return deeUserService.getByEmail(authen.getName());
+        return (DeeUser) authen.getPrincipal();
     }
 
     @Override

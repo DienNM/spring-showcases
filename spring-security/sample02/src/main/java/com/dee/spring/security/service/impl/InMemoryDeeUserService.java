@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import com.dee.spring.security.model.DeeUser;
@@ -20,6 +22,9 @@ import com.dee.spring.security.service.DeeUserService;
 public class InMemoryDeeUserService implements DeeUserService {
 
     private static Map<String, DeeUser> deeUsers;
+    
+    @Autowired
+    private UserDetailsService userDetailService;
 
     @PostConstruct
     public void init() {
@@ -69,6 +74,7 @@ public class InMemoryDeeUserService implements DeeUserService {
 
     @Override
     public void add(DeeUser user) {
+        user.getRoles().add("ROLE_USER");
         deeUsers.put(user.getEmail(), user);
     }
 

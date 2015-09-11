@@ -10,15 +10,9 @@
 <title>Comment Detail</title>
 </head>
 <body>
+<%@include file="header.jsp" %>
 
 <h1>Comment Detail</h1>
-
-<c:url var="postCommentUrl"  value="/comments/post" />
-<c:url var="listCommentUrl"  value="/comments" />
-
-<a href="${postCommentUrl}">New Comment</a> 
-<a href="${listCommentUrl}">List Comments</a>
-
 <table>
     <tbody>
 	    <tr>

@@ -9,6 +9,7 @@
 <title>Post Comment</title>
 </head>
 <body>
+<%@include file="header.jsp" %>
 
 <h1>Post your Comment</h1>
 
