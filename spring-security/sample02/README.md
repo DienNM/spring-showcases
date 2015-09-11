@@ -24,3 +24,15 @@ Case 3: Customize AuthenticationProvider
     - DeeUserDetails that implements UserDetails and extends from DeeUser
     - Update DeeUserDetailsService to return DeeUserDetails
     - authentication-provider: using DeeAuthenticationProvider
+    
+Case 4: Customize Authentication with extended parameters
+
+    - New DomainUsernamePasswordAuthenticationToken
+        + User Username, domain, and Password to login
+    - New DomainUsernamePasswordAuthenticationFilter
+        + 
+    - alias to authentication-manager
+    - Add entry-point-ref in http tag
+    - Add Custom-Filter to http
+        + Be used to insert custom filter to FilterChainProxy
+        + Position: FORM_LOGIN_FILTER
