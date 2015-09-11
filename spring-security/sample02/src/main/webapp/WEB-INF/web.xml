@@ -8,8 +8,10 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:spring/app-context.xml
-			/WEB-INF/spring/case2/security-context.xml
+			<!-- classpath:spring/case1/app-context.xml
+			/WEB-INF/spring/case1/security-context.xml -->
+            classpath:spring/case2/app-context.xml
+            /WEB-INF/spring/case2/security-context.xml
 		</param-value>
 	</context-param>
 
@@ -26,6 +28,7 @@
 		<load-on-startup>1</load-on-startup>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
+			<!-- <param-value>/WEB-INF/spring/case1/mvc-servlet.xml</param-value> -->
 			<param-value>/WEB-INF/spring/case2/mvc-servlet.xml</param-value>
 		</init-param>
 	</servlet>

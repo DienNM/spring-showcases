@@ -4,6 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<h3>Spring Security Sample Case 3</h3>
+
 <sec:authorize access="authenticated" var="authenticated"/>
 <c:choose>
     <c:when test="${authenticated}">

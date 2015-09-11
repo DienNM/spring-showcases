@@ -1,4 +1,4 @@
-package com.dee.spring.security.service.impl.customize.case3;
+package com.dee.spring.security.case3.service;
 
 import java.util.List;
 

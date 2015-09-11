@@ -1,4 +1,4 @@
-package com.dee.spring.security.model.customize;
+package com.dee.spring.security.case3.dto;
 
 import java.util.Collection;
 

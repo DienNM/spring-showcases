@@ -8,6 +8,5 @@
             http://www.springframework.org/schema/context/spring-context-4.1.xsd">
     
     <context:component-scan base-package="com.dee.spring.security.service" />
-    
     <bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
 </beans>

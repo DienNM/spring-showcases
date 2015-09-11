@@ -24,14 +24,13 @@
         
         <csrf disabled="true"/>
     </http>
-    
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER"/>
-                <user name="user1" password="user1" authorities="ROLE_USER"/>
-            </user-service>
-        </authentication-provider>
+        <authentication-provider user-service-ref="deeUserDetailsService" />
     </authentication-manager>
+    
+    
+    <!-- <authentication-manager>
+        <authentication-provider ref="deeAuthenticationProvider" />
+    </authentication-manager> -->
     
 </beans:beans>

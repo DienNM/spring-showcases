@@ -6,9 +6,10 @@ Some notes on Spring Security 4:
     
     
 Case 1:
+
     - Using default Authentication
+        + user-service tag: InMemoryUserDetailsManager
     - Customize form-login, logout
-    - Using Spring security Taglib
     
 Case 2: Customize UserDetailsService
 

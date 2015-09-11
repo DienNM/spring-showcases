@@ -1,4 +1,4 @@
-package com.dee.spring.security.service.impl.customize.case2;
+package com.dee.spring.security.case3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.dee.spring.security.case3.dto.DeeUserDetails;
 import com.dee.spring.security.model.DeeUser;
-import com.dee.spring.security.model.customize.DeeUserDetails;
 import com.dee.spring.security.service.DeeUserService;
 
 /**
