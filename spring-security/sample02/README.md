@@ -25,7 +25,7 @@ Case 3: Customize AuthenticationProvider
     - Update DeeUserDetailsService to return DeeUserDetails
     - authentication-provider: using DeeAuthenticationProvider
     
-Case 4: Customize Authentication with extended parameters
+Case 4: Customize AuthenticationProvider with extended parameters
 
     - New DomainUsernamePasswordAuthenticationToken
         + User Username, domain, and Password to login
